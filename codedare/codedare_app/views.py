@@ -14,6 +14,9 @@ def posts(request):
     return render(request, 'codedare_app/posts.html', context)
 
 def detail_post(request, post_id):
+
+    #adicionar a query aqui
+
     context = {
         "post_id": post_id
         }
