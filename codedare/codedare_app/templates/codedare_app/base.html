@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Codedare{% endblock %}</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Codedare</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'posts' %}">Posts</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>Codedare</p>
+    </footer>
+</body>
+</html>

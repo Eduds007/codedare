@@ -6,4 +6,9 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("<h1>Hello World!</h1>")
+    context = {}
+    return render(request, 'codedare_app/index.html', context)
+
+def posts(request):
+    context = {}
+    return render(request, 'codedare_app/posts.html', context)
