@@ -1,0 +1,16 @@
+
+{% extends "codedare_app/base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+    <h2>New - Post</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  
+        <button type="submit">Submit</button>
+    </form>
+
+
+{% endblock %}
