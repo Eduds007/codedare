@@ -28,11 +28,16 @@ class PostsListView(generic.ListView):
         queryset = Post.objects.all()
         if form.is_valid():
         
-            filter = form.cleaned_data.get('filter')
+            title_filter = form.cleaned_data.get('title_filter')
+            start_date_filter = form.cleaned_data.get('start_date_filter')
+            end_date_filter = form.cleaned_data.get('end_date_filter')
         
-            if filter:
-                queryset = queryset.filter(title__regex=filter)
-
+            if title_filter:
+                queryset = queryset.filter(title__regex=title_filter)
+            if start_date_filter:
+                queryset = queryset.filter(date__gte=start_date_filter, )
+            if end_date_filter:
+                queryset = queryset.filter(date__lte=end_date_filter)
 
         print(queryset)
         return queryset

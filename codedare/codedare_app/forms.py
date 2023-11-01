@@ -8,5 +8,15 @@ class PostForm(forms.ModelForm):
         exclude = ['author', 'date']
 
 class PostFilterForm(forms.Form):
-    filter = forms.CharField(required=False)
+    title_filter = forms.CharField(required=False)
+    start_date_filter = forms.DateField(
+        label='Data Inicial',
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False
+    )
+    end_date_filter = forms.DateField(
+        label='Data Final',
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False
+    )
     
