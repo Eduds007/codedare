@@ -1,0 +1,14 @@
+{% extends "codedare_app/base.html" %}
+
+{% block title %}Comentar{% endblock %}
+
+{% block content %}
+
+<h2>Categoria</h2>
+    {% for category in categories %}
+    
+    <li>{{category.name}}</li>
+    {% endfor %}
+   
+
+{% endblock %}

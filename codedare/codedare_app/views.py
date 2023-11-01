@@ -1,10 +1,11 @@
 from django.forms.models import BaseModelForm
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.views import generic
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, PostFilterForm, CommentForm, CommentFilterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 
@@ -107,4 +108,25 @@ class CommentCreateView(LoginRequiredMixin, generic.CreateView):
         form.instance.author = self.request.user  
         return super().form_valid(form)
     
+def categories_view(request):
+    categories = Category.objects.all()
 
+    context = {"categories": categories}
+    return render(request, 'codedare_app/categories.html', context)
+
+
+def categories_detail_view(request, pk):
+    
+    categories = Category.objects.filter(name__iexact=pk)
+    if len(categories) != 0:
+
+        posts = Post.objects.filter(coding_language__name__iexact=pk)
+        print(posts)
+        
+        context = {
+            "categories": categories,
+            "posts":posts,
+            }
+        return render(request, 'codedare_app/category.html', context)
+    else:
+         raise Http404("Ops.. Essa página não existe")
