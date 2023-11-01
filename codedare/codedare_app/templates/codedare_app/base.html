@@ -2,28 +2,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <title>{% block title %}Codedare{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    
+    {%  block head %}
+    {% endblock %}
+    
     
 </head>
 <body>
     <header>
-        <h1>Codedare</h1>
+    
+        <h1>CodeDare</h1>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="{% url 'posts' %}">Posts</a></li>
-                
+                <p>
+                    <a href="#">Home  </a>
+                </p>   
+                <p>
+    
+                    <a href="#"">Tutoriais</a>
+                </p>
             </ul>
         </nav>
     </header>
+    
 
-    <div class="content">
+    <main>
         {% block content %}{% endblock %}
-    </div>
+    </main>
 
     <footer>
-        <p>Codedare</p>
+        <p>Copyright 2023</p> 
+        <p>🙅‍♂️ Desenvolvido por Eduardo Milanez .</p>
     </footer>
+    
 </body>
 </html>
