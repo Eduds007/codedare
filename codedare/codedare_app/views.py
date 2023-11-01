@@ -127,6 +127,6 @@ def categories_detail_view(request, pk):
             "categories": categories,
             "posts":posts,
             }
-        return render(request, 'codedare_app/category.html', context)
+        return render(request, 'codedare_app/posts.html', context)
     else:
          raise Http404("Ops.. Essa página não existe")
