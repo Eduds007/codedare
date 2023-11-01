@@ -13,6 +13,6 @@
     </form>
 
     {% for post in posts %}
-      <li>{{ post.title }} - {{ post.content|safe}}</li>
+      <li>{{ post.title }} - {{ post.content|safe}} - {{ post.date|date:" d M Y"  }} {{ post.date|time:"H:i" }}</li>
     {% endfor %}
 {% endblock %}

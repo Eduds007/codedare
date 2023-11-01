@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
 from .models import Post, Comment
-from .forms import PostForm, PostFilterForm, CommentForm
+from .forms import PostForm, PostFilterForm, CommentForm, CommentFilterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -54,8 +54,21 @@ class PostsDetailView(generic.DetailView):
     context_object_name = 'post'
 
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(origin_post=self.object)
+        context['form'] = CommentFilterForm()
+        context['comments'] = Comment.objects.filter(origin_post=self.object).order_by('-date')
+        if self.request.method == 'GET':
+            comment_filter_form = CommentFilterForm(self.request.GET)
+            if comment_filter_form.is_valid():
+                start_date_filter = comment_filter_form.cleaned_data.get('start_date_filter')
+                end_date_filter =comment_filter_form.cleaned_data.get('end_date_filter')
+
+            if start_date_filter:
+                context['comments'] = context['comments'].filter(date__gte=start_date_filter, )
+            if end_date_filter:
+                context['comments'] = context['comments'].filter(date__lte=end_date_filter)
+
         return context
 
 
@@ -90,8 +103,8 @@ class CommentCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = '/posts'
 
     def form_valid(self, form):
-        form.instance.origin_post_id = self.kwargs['pk']  # Set the post associated with the comment
-        form.instance.author = self.request.user  # Set the comment author
+        form.instance.origin_post_id = self.kwargs['pk']  
+        form.instance.author = self.request.user  
         return super().form_valid(form)
     
 

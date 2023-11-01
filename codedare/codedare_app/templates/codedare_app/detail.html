@@ -9,9 +9,14 @@
     <p>{{ post.content|safe }}</p>
 
     <h2>Comments</h2>
+    <form method="get">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Filter Comment</button>
+    </form>
     <ul>
         {% for comment in comments %}
-            <li>{{ comment.author }} : {{ comment.comment }}</li>
+            <li>{{ comment.author }} {{ comment.date|date:" d M Y"  }} {{ comment.date|time:"H:i" }}: {{ comment.comment }}</li>
         {% empty %}
             <p>Não há comentrários para esse post</p>
         {% endfor %}

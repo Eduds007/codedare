@@ -25,3 +25,14 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields =  ['comment']
 
+class CommentFilterForm(forms.Form):
+    start_date_filter = forms.DateField(
+        label='Data Inicial',
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False
+    )
+    end_date_filter = forms.DateField(
+        label='Data Final',
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False
+    )
