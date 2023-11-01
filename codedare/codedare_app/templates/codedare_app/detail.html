@@ -2,13 +2,26 @@
 
 {% block title %}Detail{% endblock %}
 
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}">
+{% endblock  %}
+
 {% block content %}
-    <h2>POST {{ post.id }} X</h2>
-    <p>Uma descrição do site - posts</p>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content|safe }}</p>
+
+    
 
     <h2>Comments</h2>
+
+    <section class="post-page">
+        <article>
+
+            <h2>{{ post.title }} # {{post.id}}</h2>
+            <p>{{ post.content|safe }}</p>
+        </article>
+    </section>
+
+
     <form method="get">
         {% csrf_token %}
         {{ form.as_p }}
