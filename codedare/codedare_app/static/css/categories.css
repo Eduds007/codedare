@@ -1,0 +1,47 @@
+main {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    
+    
+}
+
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    
+}
+
+main h2 {
+    margin: 3rem;
+    flex
+}
+
+.tags {
+    display: flex;
+    
+}
+
+.tag {
+    background-color: #0466c8;
+    padding: 16px;
+    margin-right: 20px;
+    margin-top: 16px;
+    border-radius: 8px;
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', sans-serif;
+    max-width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    
+  }
+
+.tag:hover {
+    background-color: #00a8e8;
+  }
+
+a {
+    text-decoration: none;
+}

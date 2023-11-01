@@ -2,13 +2,24 @@
 
 {% block title %}Comentar{% endblock %}
 
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/categories.css' %}">
+{% endblock  %}
+
 {% block content %}
 
-<h2>Categoria</h2>
-    {% for category in categories %}
-    
-    <li>{{category.name}}</li>
-    {% endfor %}
-   
+<div class="categories  ">
+        <h2>Categorias</h2>
+
+        {% for category in categories %}
+        
+        
+        <a href="{% url 'detail_categories' category.name %}">
+            <p class="tag">{{category.name}}</p>
+        </a>
+        {% endfor %}
+       
+    </div>
 
 {% endblock %}
