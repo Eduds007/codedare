@@ -3,16 +3,50 @@
 
 {% block title %}List Page {% endblock %}
 
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/posts.css' %}">
+{% endblock  %}
+
+
 {% block content %}
-    <h2>Página de listagem</h2>
-    <p>Uma descrição do site - homepage</p>
 
     <form method="get">
       {{ form.as_p }}
       <input type="submit" value="Apply Filter">
     </form>
+    
+    
 
-    {% for post in posts %}
-      <li>{{ post.title }} - {{ post.content|safe}} - {{ post.date|date:" d M Y"  }} {{ post.date|time:"H:i" }}</li>
-    {% endfor %}
+    <section class="posts-page">
+      <h2> Posts</h2>
+      
+  
+      <div class="grid">
+        {% for post in posts %}
+              
+    
+              <article class="post">
+                   <a href="{% url 'detail' post.id %}"> 
+                          <img src="#" alt="thumb"> 
+                          <div class="post-overview">
+                              <div class="post-text">
+  
+                                  <p class="name"> {{ post.title }} </p>
+                                  <p class="subtitle"> {{ post.date|date:" d M Y"  }} {{ post.date|time:"H:i" }}</p>
+                              </div>
+                              <div class="hashtags">
+      
+                                 
+                                  <p class="tag">{{post.coding_language }}</p>
+                                  
+                              </div>
+                          </div>
+                      </a> 
+              </article>
+              {% endfor %}
+      </div>
+      
+  </section>
+  
 {% endblock %}
