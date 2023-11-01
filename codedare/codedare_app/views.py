@@ -2,8 +2,8 @@ from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
-from .models import Post
-from .forms import PostForm, PostFilterForm
+from .models import Post, Comment
+from .forms import PostForm, PostFilterForm, CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -53,6 +53,11 @@ class PostsDetailView(generic.DetailView):
     template_name = 'codedare_app/detail.html'
     context_object_name = 'post'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(origin_post=self.object)
+        return context
+
 
 class PostsCreateView(LoginRequiredMixin, generic.CreateView):
     model = Post
@@ -76,4 +81,17 @@ class PostsDeleteView(generic.DeleteView):
     model = Post
     template_name = 'codedare_app/confirm_delete.html'
     success_url = '/posts'
+
+
+class CommentCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'codedare_app/comment.html'
+    success_url = '/posts'
+
+    def form_valid(self, form):
+        form.instance.origin_post_id = self.kwargs['pk']  # Set the post associated with the comment
+        form.instance.author = self.request.user  # Set the comment author
+        return super().form_valid(form)
+    
 

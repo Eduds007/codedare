@@ -1,0 +1,14 @@
+{% extends "codedare_app/base.html" %}
+
+{% block title %}Comentar{% endblock %}
+
+{% block content %}
+
+<h2>Add a Comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Comment</button>
+    </form>
+
+{% endblock %}

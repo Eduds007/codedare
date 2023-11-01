@@ -1,12 +1,21 @@
 {% extends "codedare_app/base.html" %}
 
-{% block title %}Index - <Code></Code>{% endblock %}
+{% block title %}Detail{% endblock %}
 
 {% block content %}
     <h2>POST {{ post.id }} X</h2>
     <p>Uma descrição do site - posts</p>
     <h1>{{ post.title }}</h1>
     <p>{{ post.content|safe }}</p>
+
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.author }} : {{ comment.comment }}</li>
+        {% empty %}
+            <p>Não há comentrários para esse post</p>
+        {% endfor %}
+    </ul>
 {% endblock %}
 
 
