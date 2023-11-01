@@ -6,4 +6,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = '__all__'  
         exclude = ['author', 'date']
+
+class PostFilterForm(forms.Form):
+    filter = forms.CharField(required=False)
     

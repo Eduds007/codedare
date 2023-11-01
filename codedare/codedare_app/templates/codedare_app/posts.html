@@ -1,11 +1,16 @@
 
 {% extends "codedare_app/base.html" %}
 
-{% block title %}Index - <Code></Code>{% endblock %}
+{% block title %}List Page {% endblock %}
 
 {% block content %}
     <h2>Página de listagem</h2>
     <p>Uma descrição do site - homepage</p>
+
+    <form method="get">
+      {{ form.as_p }}
+      <input type="submit" value="Apply Filter">
+    </form>
 
     {% for post in posts %}
       <li>{{ post.title }} - {{ post.content|safe}}</li>
