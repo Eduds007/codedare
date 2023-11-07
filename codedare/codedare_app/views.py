@@ -15,9 +15,7 @@ def index(request):
     context = {}
     return render(request, 'codedare_app/index.html', context)
 
-def list_posts_view(request):
-    context = {}
-    return render(request, 'codedare_app/posts.html', context)
+
 
 
 class PostsListView(generic.ListView):
@@ -48,6 +46,7 @@ class PostsListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = PostFilterForm()
+        context['is_category'] = False
         return context
 
 
@@ -150,6 +149,7 @@ def categories_detail_view(request, pk):
         context = {
             "categories": categories,
             "posts":posts,
+            "is_category":True,
             }
         return render(request, 'codedare_app/posts.html', context)
     else:

@@ -19,7 +19,13 @@
     
 
     <section class="posts-page">
-      <h2> Posts</h2>
+      {% if is_category %}
+      {% for category in categories %}
+      <h2> {{category}}</h2>
+      {% endfor %}
+      {% else  %}
+        <h2> Posts</h2>
+      {% endif %}
       <a href="{% url  'new' %}">
         <p class="cta">Criar Post</p>
       </a>
