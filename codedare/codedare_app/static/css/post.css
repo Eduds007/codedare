@@ -90,7 +90,7 @@ main {
 input[type="date"]{
     background-color: #0080ff;
     padding: 12px;
-    margin-bottom: 12px;
+    margin-left: 12px ;
     font-family: "Roboto Mono",monospace;
     color: #ffffff;
     font-size: 0.8rem;
@@ -105,6 +105,10 @@ input[type="date"]{
     border-radius: 3px;
 }
 
+label {
+    margin-left: 12px;
+}
+
 button[type='submit'] {
     background-color: #0080ff;
     border: none;
@@ -112,6 +116,8 @@ button[type='submit'] {
     padding: 12px;
     border-radius: 8px;
     font-weight: bold;
+    margin-left: 12px;
+
 
 }
 
@@ -126,8 +132,10 @@ button[type='submit']:active {
 
 form {
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
     justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 12px;
 
 }
 
