@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         #fields =  '__all__'
-        fields = ['title' , 'content', 'coding_language']
+        fields = ['title' , 'content', 'coding_language', 'thumb']
         
         
 
