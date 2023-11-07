@@ -27,8 +27,16 @@
                 </a>
             </div>
             <article>
-                
+                <h4>{{ post.date|date:" d M Y"  }} - {{ post.date|time:"H:i" }}</h4>
                 <h2>{{ post.title }} # {{post.id}}</h2>
+                <div class="categories">
+
+                    {%for lang in post.coding_language.all %}
+                                    <a href="{% url 'detail_categories' lang.name %}">
+                                      <p class="tag">{{lang}}</p>
+                                    </a>
+                    {% endfor %}
+                </div>
                 <p>{{ post.content|safe }}</p>
             </article>
         </section>
