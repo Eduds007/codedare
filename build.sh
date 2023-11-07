@@ -2,7 +2,6 @@
 # exit on error
 set -o errexit
 
-cd codedare 
 echo "$(pwd)"
 pip install -r requirements.txt
 
