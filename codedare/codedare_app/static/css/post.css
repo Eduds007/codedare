@@ -1,3 +1,8 @@
+main {
+    flex-direction: column;
+}
+
+
 .post-page {
 
     padding: 12px;
@@ -80,4 +85,53 @@
   }
 
     
+}
+
+input[type="date"]{
+    background-color: #0080ff;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+button[type='submit'] {
+    background-color: #0080ff;
+    border: none;
+    outline: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+
+}
+
+button[type='submit']:hover {
+    background-color: #00a8e8;
+}
+
+
+button[type='submit']:active {
+    background-color: #74eaff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+ul {
+    padding: 12px;
 }
