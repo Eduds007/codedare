@@ -40,7 +40,7 @@ class PostsListView(generic.ListView):
             if end_date_filter:
                 queryset = queryset.filter(date__lte=end_date_filter)
 
-        print(queryset)
+        
         return queryset
     
     def get_context_data(self, **kwargs):
