@@ -1,11 +1,19 @@
 from django import forms
-from .models import Post, Comment
+from .models import Post, Comment, Category
 
 class PostForm(forms.ModelForm):
+    coding_language = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )   
     class Meta:
         model = Post
-        fields = '__all__'  
-        exclude = ['author', 'date']
+        #fields =  '__all__'
+        fields = ['title' , 'content', 'coding_language']
+        
+        
+
+
 
 class PostFilterForm(forms.Form):
     title_filter = forms.CharField(required=False)

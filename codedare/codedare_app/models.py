@@ -14,7 +14,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    coding_language = models.ForeignKey(Category, on_delete=models.CASCADE)
+    coding_language = models.ManyToManyField(Category)
     title = models.CharField(max_length=255)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)

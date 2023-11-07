@@ -46,8 +46,9 @@
                               </div>
                               <div class="hashtags">
       
-                                 
-                                  <p class="tag">{{post.coding_language }}</p>
+                                {%for lang in post.coding_language.all %}
+                                  <p class="tag">{{lang }}</p>
+                                {% endfor %}
                                   
                               </div>
                           </div>
