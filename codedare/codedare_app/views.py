@@ -5,6 +5,7 @@ from django.views import generic
 from .models import Post, Comment, Category
 from .forms import PostForm, PostFilterForm, CommentForm, CommentFilterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseForbidden
 
 
 
@@ -89,12 +90,31 @@ class PostsUpdateView(generic.UpdateView):
     template_name = 'codedare_app/edit.html'
     fields = ['title', 'content' ]
     success_url = '/posts'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        # Verifique se o usuário logado é o autor do objeto
+        if self.request.user == self.object.author:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden("Você não tem permissão para editar este post.")
+
     
 
 class PostsDeleteView(generic.DeleteView):
     model = Post
     template_name = 'codedare_app/confirm_delete.html'
     success_url = '/posts'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        # Verifique se o usuário logado é o autor do objeto
+        if self.request.user == self.object.author:
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseForbidden("Você não tem permissão para deletar este post.")
 
 
 class CommentCreateView(LoginRequiredMixin, generic.CreateView):

@@ -2,13 +2,18 @@
 
 {% extends "codedare_app/base.html" %}
 
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/delete.css' %}">
+{% endblock  %}
+
 {% block content %}
-    <h2>Delete - Post</h2>
+    <h3>Tem certeza que deseja deletar esse post?</h3>
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}  
-        <button type="submit">Submit</button>
+        <button type="submit">Deletar</button>
     </form>
 
 

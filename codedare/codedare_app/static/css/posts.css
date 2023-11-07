@@ -109,3 +109,23 @@ a img {
 
     
 }
+
+.cta {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    background-color:#0466c8;
+    padding: 12px 24px 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.5s ease;
+    
+}
+
+.cta:hover {
+    background-color: #00a8e8;
+  }
+
+a {
+    text-decoration: none;
+}

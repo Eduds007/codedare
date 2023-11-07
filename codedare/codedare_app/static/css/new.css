@@ -1,0 +1,48 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+button[type='submit'] {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    background-color: #0080ff;
+    border: none;
+    outline: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 100%;
+
+}
+
+button[type='submit']:hover {
+    background-color: #00a8e8;
+}
+
+
+button[type='submit']:active {
+    background-color: #74eaff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form label {
+    margin: 12px;
+}
+
+
+textarea, input, select {
+    text-decoration: none;
+    border-color: #00a8e8;
+    border-radius: 12px;
+    outline: none;
+    background-color: #0b1a35;
+    padding: 8px;
+}

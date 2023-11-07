@@ -20,7 +20,10 @@
 
     <section class="posts-page">
       <h2> Posts</h2>
-      
+      <a href="{% url  'new' %}">
+        <p class="cta">Criar Post</p>
+      </a>
+
   
       <div class="grid">
         {% for post in posts %}
