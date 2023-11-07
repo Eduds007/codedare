@@ -6,6 +6,7 @@ from .models import Post, Comment, Category
 from .forms import PostForm, PostFilterForm, CommentForm, CommentFilterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
+from django.urls import reverse_lazy
 
 
 
@@ -121,7 +122,10 @@ class CommentCreateView(LoginRequiredMixin, generic.CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'codedare_app/comment.html'
-    success_url = '/posts'
+    def get_success_url(self) -> str:
+        print(self.kwargs['pk'] )
+        return  reverse_lazy('detail', kwargs={'pk': self.kwargs['pk'] })
+
 
     def form_valid(self, form):
         form.instance.origin_post_id = self.kwargs['pk']  

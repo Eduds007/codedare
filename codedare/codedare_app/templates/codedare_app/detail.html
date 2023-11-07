@@ -14,6 +14,18 @@
         
         
         <section class="post-page">
+            <div class="btns"> 
+
+                <a href="{% url  'edit' post.id %}">
+                    <p class="btn">Editar Post</p>
+                </a>
+                <a href="{% url  'delete' post.id %}">
+                    <p class="btn">Deletar Post</p>
+                </a>
+                <a href="{% url  'comment' post.id %}">
+                    <p class="btn">Comentar</p>
+                </a>
+            </div>
             <article>
                 
                 <h2>{{ post.title }} # {{post.id}}</h2>

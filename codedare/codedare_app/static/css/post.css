@@ -135,3 +135,31 @@ form {
 ul {
     padding: 12px;
 }
+
+
+.btns {
+    display: flex
+    
+}
+
+
+
+.btn {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    background-color:#0466c8;
+    padding: 12px 24px 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.5s ease;
+    
+}
+
+.btn:hover {
+    background-color: #00a8e8;
+  }
+
+a {
+    text-decoration: none;
+}

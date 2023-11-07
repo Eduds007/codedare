@@ -2,13 +2,20 @@
 
 {% block title %}Comentar{% endblock %}
 
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/comment.css' %}">
+{% endblock  %}
 {% block content %}
 
-<h2>Add a Comment</h2>
+<h2>Adicionar comentário</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Comment</button>
+        {%for field in form %}
+            {{field.label_tag}}
+            {{ field }}
+        {% endfor %}
+        <button type="submit">Publicar comentário</button>
     </form>
 
 {% endblock %}
